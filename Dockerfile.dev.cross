@@ -7,7 +7,7 @@ FROM __BUILD_ARCH__/node:carbon-alpine AS build
 __CROSS_COPY bin/qemu-__QEMU__-static /usr/bin/
 
 # Set the commit of Zwave2Mqtt to checkout when cloning the repo
-ENV Z2M_VERSION=a569258a4a28d7818657653e395b15bd11e0bc91
+ENV Z2M_VERSION=61b549deea1a8c0999e07563d3a18ffdb1e66e43
 
 # Install required dependencies
 RUN apk update && apk --no-cache add \
@@ -32,7 +32,7 @@ RUN apk update && apk --no-cache add \
 
 # Get latest stable 1.6 and move binaries in /dist/lib and devices db on /dist/db
 RUN cd /root \
-    && wget http://old.openzwave.com/downloads/openzwave-1.6.962.tar.gz \
+    && wget http://old.openzwave.com/downloads/openzwave-1.6.999.tar.gz \
     && tar zxvf openzwave-*.gz \
     && cd openzwave-* && make && make install \
     && mkdir -p /dist/lib \
